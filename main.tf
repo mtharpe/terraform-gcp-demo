@@ -13,7 +13,7 @@ resource "google_compute_instance" "default" {
 
   boot_disk {
     initialize_params {
-      image = "ubuntu-os-cloudd/ubuntu-1804-bionic-v20200521"
+      image = "ubuntu-os-cloud/ubuntu-1804-bionic-v20200521"
     }
   }
 
