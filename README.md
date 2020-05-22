@@ -1,3 +1,5 @@
+![Terraform Testing and Release](https://github.com/mtharpe/terraform-gcp-demo/workflows/Terraform%20Testing%20and%20Release/badge.svg)
+
 # terraform-gcp-demo
 
 ## Requirements
