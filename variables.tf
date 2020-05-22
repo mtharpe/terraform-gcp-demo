@@ -2,10 +2,10 @@ variable "google_credentials" {
   description = "Google Cloud Platform Credentials"
 }
 
-variable "region" {
+variable "google_region" {
   description = "GCP Region"
 }
 
-variable "project" {
+variable "google_project" {
   description = "GCP Project Name"
 }

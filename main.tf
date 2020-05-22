@@ -1,7 +1,7 @@
 provider "google" {
   credentials = var.google_credentials
-  project     = var.project
-  region      = var.region
+  project     = var.google_project
+  region      = var.google_region
 }
 
 resource "google_compute_instance" "default" {
