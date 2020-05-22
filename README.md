@@ -1,1 +1,0 @@
-# terraform-gcp-demo
