@@ -5,3 +5,7 @@ variable "google_credentials" {
 variable "region" {
   description = "GCP Region"
 }
+
+variable "project" {
+  description = "GCP Project Name"
+}
