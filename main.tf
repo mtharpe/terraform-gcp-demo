@@ -34,7 +34,7 @@ resource "google_compute_instance" "default" {
     foo = "bar"
   }
 
-  metadata_startup_script = "echo hi > /test.txt"
+  metadata_startup_script = "sudo apt update && sudo apt upgrade -y --auto-remove"
 
   service_account {
     scopes = ["userinfo-email", "compute-ro", "storage-ro"]
