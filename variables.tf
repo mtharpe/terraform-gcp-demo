@@ -9,3 +9,6 @@ variable "google_region" {
 variable "google_project" {
   description = "GCP Project Name"
 }
+
+variable "gcp_instance_username" {}
+variable "gcp_instance_password" {}
