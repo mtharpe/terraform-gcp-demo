@@ -40,3 +40,16 @@ resource "google_compute_instance" "default" {
     scopes = ["userinfo-email", "compute-ro", "storage-ro"]
   }
 }
+
+resource "google_sql_database" "database" {
+  name     = "demo-database"
+  instance = google_sql_database_instance.instance.name
+}
+
+resource "google_sql_database_instance" "instance" {
+  name   = "my-database-instance"
+  region = "us-central1"
+  settings {
+    tier = "db-f1-micro"
+  }
+}
