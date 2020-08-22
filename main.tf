@@ -84,7 +84,7 @@ resource "google_sql_database" "database" {
 }
 
 resource "google_sql_database_instance" "instance" {
-  name   = "${var.google_project}-my-database-instance"
+  name   = "${var.google_project}-db"
   region = "us-central1"
   settings {
     tier = "db-f1-micro"
