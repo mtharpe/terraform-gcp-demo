@@ -1,8 +1,13 @@
-provider "google" {
-  credentials = var.google_credentials
-  project     = var.google_project
-  region      = var.google_region
+terraform {
+  required_providers {
+    google = {
+      source  = "hashicorp/google"
+      version = ">=4.0.0"
+    }
+  }
 }
+
+provider "google" {}
 
 resource "google_compute_instance" "demo1" {
   name         = "demo1"

@@ -1,14 +1,8 @@
-variable "google_credentials" {
-  description = "Google Cloud Platform Credentials"
+variable "gcp_instance_username" {
+  description = "GCP Instance Username"
+}
+variable "gcp_instance_password" {
+  description = "GCP Instance Password"
 }
 
-variable "google_region" {
-  description = "GCP Region"
-}
 
-variable "google_project" {
-  description = "GCP Project Name"
-}
-
-variable "gcp_instance_username" {}
-variable "gcp_instance_password" {}
