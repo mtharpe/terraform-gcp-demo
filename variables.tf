@@ -9,3 +9,8 @@ variable "gcp_instance_password" {
 variable "gcp_project" {
   description = "GCP Project Name"
 }
+
+variable "gcp_region" {
+  description = "GCP Project Region"
+}
+
