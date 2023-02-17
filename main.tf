@@ -14,21 +14,11 @@ provider "google" {
 
 resource "google_compute_instance" "demo1" {
   name         = "demo1"
-  machine_type = "n1-standard-1"
-  zone         = "us-central1-a"
-
+  machine_type = "n1-stand	ard-1"
+  zone         = "eu-west3"
+  image        = "centos-7-v20230203"
   tags = ["foo", "bar"]
 
-  boot_disk {
-    initialize_params {
-      image = "ubuntu-os-cloud/ubuntu-1804-bionic-v20200521"
-    }
-  }
-
-  // Local SSD disk
-  scratch_disk {
-    interface = "SCSI"
-  }
 
   network_interface {
     network = "default"
