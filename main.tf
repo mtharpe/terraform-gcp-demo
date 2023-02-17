@@ -1,77 +1,50 @@
 terraform {
-  required_providers {
-    google = {
-      source  = "hashicorp/google"
-      version = ">=4.0.0"
-    }
-  }
+  required_version = ">= 1.3.7"
 }
 
-provider "google" {
-  project = var.gcp_project
-  region  = var.gcp_region
+module "network" {
+  source                     = "../modules/network"
+
+  name                       = var.network_name
+  project                    = var.project_id
+  region                     = var.region
+  zones                      = var.zones
+  webservers_subnet_name     = var.webservers_subnet_name
+  webservers_subnet_ip_range = var.webservers_subnet_ip_range
+  management_subnet_name     = var.management_subnet_name
+  management_subnet_ip_range = var.management_subnet_ip_range
+  bastion_image              = var.bastion_image
+  bastion_instance_type      = var.bastion_instance_type
+  user                       = var.user
+  ssh_key                    = var.ssh_key
 }
 
-resource "google_compute_instance" "demo1" {
-  name         = "demo1"
-  machine_type = "n1-stand	ard-1"
-  zone         = "eu-west3"
-  image        = "centos-7-v20230203"
-  tags = ["foo", "bar"]
 
-
-  network_interface {
-    network = "default"
-
-    access_config {
-      // Ephemeral IP
-    }
-  }
-
-  metadata = {
-    foo = "bar"
-  }
-
-  metadata_startup_script = "sudo apt update && sudo apt upgrade -y --auto-remove"
-
-  service_account {
-    scopes = ["userinfo-email", "compute-ro", "storage-ro"]
-  }
+module "mysql-db" {
+  source           = "../modules/db"
+  db_name          = var.db_name
+  project          = var.project_id
+  region           = var.region
+  user_name        = var.user_name
+  user_password    = var.user_password
 }
 
-resource "google_compute_instance" "demo2" {
-  name         = "demo2"
-  machine_type = "n1-standard-1"
-  zone         = "us-central1-a"
-
-  tags = ["foo", "bar"]
-
-  boot_disk {
-    initialize_params {
-      image = "ubuntu-os-cloud/ubuntu-1804-bionic-v20200521"
-    }
-  }
-
-  // Local SSD disk
-  scratch_disk {
-    interface = "SCSI"
-  }
-
-  network_interface {
-    network = "default"
-
-    access_config {
-      // Ephemeral IP
-    }
-  }
-
-  metadata = {
-    foo = "bar"
-  }
-
-  metadata_startup_script = "sudo apt update && sudo apt upgrade -y --auto-remove"
-
-  service_account {
-    scopes = ["userinfo-email", "compute-ro", "storage-ro"]
-  }
+module "instance-template" {
+  source        = "../modules/instance-template"
+  name          = var.instace_template_name
+  env           = var.env
+  project       = var.project_id
+  region        = var.region
+  network_name  = module.network.name
+  image         = var.app_image
+  instance_type = var.app_instance_type
+  user          = var.user
+  ssh_key       = var.ssh_key
+  db_name       = var.project_name
+  db_user       = var.user_name
+  db_password   = var.user_password
+  db_ip         = module.mysql-db.instance_address
+  owner         = var.owner
+  environmentname = var.env
 }
+
