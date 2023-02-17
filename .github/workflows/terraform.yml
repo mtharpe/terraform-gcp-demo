@@ -50,4 +50,9 @@ jobs:
         continue-on-error: true
         run: |
             terraform init
-            terraform plan -input=false
+            terraform plan -var-file="dev.auto.tfvars"
+
+
+      - name: Terraform Apply
+        run: |
+            terraform apply -var-file="dev.auto.tfvars" --auto-approve
