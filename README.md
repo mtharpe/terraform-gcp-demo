@@ -1,7 +1,5 @@
 [![CircleCI](https://dl.circleci.com/status-badge/img/gh/mtharpe/terraform-gcp-demo/tree/master.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/mtharpe/terraform-gcp-demo/tree/master)
 
-![Terraform Testing and Release](https://github.com/mtharpe/terraform-gcp-demo/workflows/Terraform%20Testing%20and%20Release/badge.svg)
-
 ## Requirements
 
 No requirements.
