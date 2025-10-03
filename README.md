@@ -1,4 +1,4 @@
-[![CircleCI](https://dl.circleci.com/status-badge/img/gh/mtharpe/terraform-gcp-demo/tree/master.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/mtharpe/terraform-gcp-demo/tree/master)
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/mtharpe/terraform-gcp-demo/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/mtharpe/terraform-gcp-demo/tree/main)
 
 ## Requirements
 
